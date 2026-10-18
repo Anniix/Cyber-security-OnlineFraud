@@ -150,15 +150,39 @@
   }
 
   /* ==========================================================================
-     Mobile Menu Toggle
+     Mobile Menu Toggle (Robust Mobile Interaction)
      ========================================================================== */
   function initMobileMenu() {
     const toggleBtn = document.getElementById('mobileMenuToggle');
     const mainNav = document.getElementById('mainNav');
 
     if (toggleBtn && mainNav) {
-      toggleBtn.addEventListener('click', () => {
-        mainNav.classList.toggle('open');
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mainNav.classList.toggle('open');
+        toggleBtn.textContent = isOpen ? '✕' : '☰';
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close when clicking any nav link
+      const links = mainNav.querySelectorAll('.nav-link');
+      links.forEach((l) => {
+        l.addEventListener('click', () => {
+          mainNav.classList.remove('open');
+          toggleBtn.textContent = '☰';
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
+          if (mainNav.classList.contains('open')) {
+            mainNav.classList.remove('open');
+            toggleBtn.textContent = '☰';
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
       });
     }
   }
@@ -270,6 +294,7 @@
         resultRule.textContent = dict.checkerResultSafeRule;
         resultCard.style.display = 'block';
       }
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
 
