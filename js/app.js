@@ -365,6 +365,25 @@
   }
 
   /* ==========================================================================
+     Sticky Header Scroll Elevation
+     ========================================================================== */
+  function initStickyHeader() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    const onScroll = () => {
+      if (window.scrollY > 15) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ==========================================================================
      Document Ready Initialization
      ========================================================================== */
   document.addEventListener('DOMContentLoaded', () => {
@@ -373,6 +392,7 @@
     const langToUse = currentLang || DEFAULT_LANG;
     applyLanguage(langToUse);
 
+    initStickyHeader();
     initLanguageModal();
     initMobileMenu();
     initSOSModal();
