@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Defense & Recovery - CyberSatark Community Hub</title>
+  <meta name="description" content="Official 4-Step Golden Hour Cyber SOP: Learn how to freeze bank accounts, dial 1930, report on cybercrime.gov.in, and take the Cyber Safety Community Pledge. Available in English, Hindi, and Marathi.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Live Threat Alert Ticker -->
+  <aside class="alert-ticker" aria-label="Trending cyber threat advisory">
+    <span class="ticker-badge" data-i18n="tickerBadgeText">LIVE ALERT</span>
+    <span class="ticker-text" data-i18n="tickerNotice">Beware of malicious WhatsApp wedding invitation APKs (Shaadi_Card.apk) and fake traffic challan links draining bank accounts!</span>
+  </aside>
+
+  <!-- Emergency Helpline Strip -->
+  <aside class="emergency-strip" aria-label="Emergency Cyber Crime Helpline">
+    <div class="container">
+      <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+        <span data-i18n="emergencyBarText">Immediate Financial Fraud? Dial Official National Helpline:</span>
+        <span class="emergency-dial-badge">📞 1930</span>
+      </div>
+      <div>
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" data-i18n="emergencyBarAction">Report at cybercrime.gov.in</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="CyberSatark Homepage">
+        <div class="brand-icon">🛡️</div>
+        <div class="brand-title">
+          <span data-i18n="brandTitle">CyberSatark</span>
+          <span class="sub" data-i18n="brandSubtitle">Community Cyber Defense Initiative</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link" data-i18n="navHome">Home &amp; Overview</a></li>
+          <li><a href="problems.html" class="nav-link" data-i18n="navProblems">Threats &amp; Frauds</a></li>
+          <li><a href="solutions.html" class="nav-link active" data-i18n="navSolutions">Defense &amp; Solutions</a></li>
+        </ul>
+      </nav>
+
+      <!-- Controls: Language & Theme -->
+      <div class="header-controls">
+        <div class="lang-select-wrap">
+          <select id="headerLangSelect" class="lang-select" aria-label="Select language">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+          </select>
+          <span class="lang-select-arrow">▼</span>
+        </div>
+
+        <button id="themeToggleBtn" class="theme-btn" aria-label="Toggle theme">
+          <svg id="sunIcon" style="display:none;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moonIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Open mobile navigation">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Startup Preferred Language Toast / Modal -->
+  <div id="langToastModal" class="lang-toast-overlay" role="dialog" aria-modal="true" aria-labelledby="langToastTitle">
+    <div class="lang-toast-card">
+      <button id="langToastClose" class="lang-toast-close" aria-label="Close language selector">&times;</button>
+      <div class="lang-toast-badge">
+        <span>🌐</span> <span data-i18n="toastBadge">Community Initiative</span>
+      </div>
+      <h2 id="langToastTitle" class="lang-toast-title" data-i18n="toastTitle">Select Your Preferred Language</h2>
+      <p class="lang-toast-subtitle" data-i18n="toastSubtitle">Choose a language for seamless awareness across English, हिन्दी, and मराठी.</p>
+      
+      <div class="lang-toast-buttons">
+        <button class="lang-pick-btn" data-lang="en">
+          <span>English</span>
+          <small>Default</small>
+        </button>
+        <button class="lang-pick-btn" data-lang="hi">
+          <span>हिन्दी</span>
+          <small>Hindi</small>
+        </button>
+        <button class="lang-pick-btn" data-lang="mr">
+          <span>मराठी</span>
+          <small>Marathi</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unique Feature: Floating Emergency SOS Button -->
+  <button id="floatingSosBtn" class="floating-sos-btn" aria-label="Open emergency cyber fraud triage">
+    <span data-i18n="sosBtnText">🚨 Emergency: Just Defrauded?</span>
+  </button>
+
+  <!-- Emergency SOS Triage Modal -->
+  <div id="sosModal" class="sos-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="sosModalTitle">
+    <div class="sos-modal-card">
+      <button id="sosModalClose" class="sos-modal-close" aria-label="Close emergency modal">&times;</button>
+      <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+        <span style="font-size:1.5rem;">🚨</span>
+        <h2 style="font-size:1.35rem; font-weight:800; color:var(--danger-base);" data-i18n="sosModalTitle">Immediate Cyber Fraud Emergency Action</h2>
+      </div>
+      <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;" data-i18n="sosModalSub">Act quickly! The first 120 minutes are crucial to freeze stolen money in cybercrime networks.</p>
+
+      <a href="tel:1930" class="btn btn-danger" style="width:100%; padding:0.9rem; font-size:1.05rem; margin-bottom:1.25rem;" data-i18n="sosCallDirect">
+        📞 Tap to Call 1930 Helpline (Toll-Free 24/7)
+      </a>
+
+      <div style="background-color:var(--bg-surface-elevated); padding:1rem; border-radius:var(--radius-sm); border-left:3px solid var(--danger-base); margin-bottom:1.25rem;">
+        <div style="font-size:0.88rem; display:flex; flex-direction:column; gap:0.4rem; color:var(--text-secondary);">
+          <div data-i18n="sosRule1"><strong>1. Keep UTR Ready:</strong> Note your Bank Transaction ID / UTR number from SMS.</div>
+          <div data-i18n="sosRule2"><strong>2. Freeze Netbanking:</strong> Immediately block your UPI and ATM card from your banking app.</div>
+          <div data-i18n="sosRule3"><strong>3. Don't Delete Evidence:</strong> Keep WhatsApp chats, fake numbers, and screenshots intact.</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:0.95rem; font-weight:700; margin-bottom:0.5rem;" data-i18n="sosBankListTitle">Instant Bank Card Lock Toll-Free Numbers:</h3>
+      <div class="sos-bank-grid">
+        <div class="sos-bank-card">
+          <strong>State Bank of India (SBI)</strong>
+          <span>Call: <a href="tel:18001234">1800 1234</a></span><br>
+          <span>SMS: <code>BLOCK &lt;Last 4 digits&gt;</code> to 567676</span>
+        </div>
+        <div class="sos-bank-card">
+          <strong>HDFC Bank</strong>
+          <span>Call: <a href="tel:18001600">1800 1600</a></span><br>
+          <span>Quick Netbanking block via App</span>
+        </div>
+        <div class="sos-bank-card">
+          <strong>ICICI Bank</strong>
+          <span>Call: <a href="tel:18001080">1800 1080</a></span><br>
+          <span>iMobile: Security &gt; Block Card</span>
+        </div>
+        <div class="sos-bank-card">
+          <strong>Bank of Baroda</strong>
+          <span>Call: <a href="tel:18005700">1800 5700</a></span><br>
+          <span>Bob World: Cards &gt; Freeze</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Section Introduction -->
+    <section style="padding: 3rem 0 2rem; background-color: var(--bg-surface); border-bottom: 1px solid var(--border-subtle);">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:0;">
+          <span class="section-tag" data-i18n="solPageTag">Actionable Defense</span>
+          <h1 class="section-title" data-i18n="solPageTitle">The Community Cyber Shield: Defense &amp; Emergency Protocol</h1>
+          <p class="section-desc" data-i18n="solPageDesc">If you or someone in your community is targeted, here is the official step-by-step SOP to protect accounts and maximize money recovery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Golden Hour Timeline Section -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Emergency SOP</span>
+          <h2 class="section-title" data-i18n="goldenHourTitle">The 'Golden Hour' 4-Step Incident Protocol</h2>
+          <p class="section-desc" data-i18n="goldenHourSubtitle">Acting within the first 120 minutes of financial fraud gives cyber police the highest chance of freezing the fraudulent beneficiary account.</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Step 1 -->
+          <div class="timeline-step">
+            <div class="timeline-num" data-i18n="step1Num">1</div>
+            <div class="timeline-card">
+              <span class="timeline-action-badge" data-i18n="step1Badge">Immediate 24/7 Action</span>
+              <h3 style="margin-top:0.5rem;" data-i18n="step1Title">Dial 1930 Immediately</h3>
+              <p data-i18n="step1Desc">Call the National Cyber Crime Helpline (1930). Keep transaction details ready: UTR / Reference number, sender account, receiver bank name, and time of transaction.</p>
+              <a href="tel:1930" class="btn btn-danger" style="padding: 0.45rem 1rem; font-size:0.85rem;">📞 Call 1930 Now</a>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-step">
+            <div class="timeline-num" data-i18n="step2Num">2</div>
+            <div class="timeline-card">
+              <span class="timeline-action-badge" data-i18n="step2Badge">Prevent Secondary Loss</span>
+              <h3 style="margin-top:0.5rem;" data-i18n="step2Title">Freeze Bank Accounts &amp; Cards</h3>
+              <p data-i18n="step2Desc">Use your bank's mobile app to instantly lock debit/credit cards, disable netbanking, and toggle off international and online transactions.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-step">
+            <div class="timeline-num" data-i18n="step3Num">3</div>
+            <div class="timeline-card">
+              <span class="timeline-action-badge" data-i18n="step3Badge">Crucial for Police FIR</span>
+              <h3 style="margin-top:0.5rem;" data-i18n="step3Title">Preserve All Evidence</h3>
+              <p data-i18n="step3Desc">Do not delete chats, SMS, call logs, or URLs. Take clear screenshots of the fraudster's profile, UPI IDs, payment slips, and transaction IDs.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-step">
+            <div class="timeline-num" data-i18n="step4Num">4</div>
+            <div class="timeline-card">
+              <span class="timeline-action-badge" data-i18n="step4Badge">Legal Documentation</span>
+              <h3 style="margin-top:0.5rem;" data-i18n="step4Title">File Formal Complaint on Portal</h3>
+              <p data-i18n="step4Desc">Visit cybercrime.gov.in and lodge a comprehensive complaint. Obtain your National Cybercrime Reporting Portal (NCRP) Acknowledgement Number.</p>
+              <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 0.45rem 1rem; font-size:0.85rem;">🌐 cybercrime.gov.in &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Official Portals Grid Section -->
+    <section style="background-color: var(--bg-surface-elevated); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Authorized Resources</span>
+          <h2 class="section-title" data-i18n="officialPortalsTitle">Official Indian Government Cyber Safety Portals</h2>
+        </div>
+
+        <div class="resource-grid">
+          <!-- Resource 1 -->
+          <div class="resource-card">
+            <div class="resource-logo-title">
+              <div class="resource-icon">🏛️</div>
+              <h3 data-i18n="portal1Title">National Cyber Crime Portal</h3>
+            </div>
+            <p data-i18n="portal1Desc">Official Government of India portal for reporting financial fraud, cyber stalking, and online crimes against women/children.</p>
+            <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.88rem;" data-i18n="portal1Link">Visit cybercrime.gov.in &rarr;</a>
+          </div>
+
+          <!-- Resource 2 -->
+          <div class="resource-card">
+            <div class="resource-logo-title">
+              <div class="resource-icon">📡</div>
+              <h3 data-i18n="portal2Title">Chakshu (Sanchar Saathi)</h3>
+            </div>
+            <p data-i18n="portal2Desc">Report suspected fraud communications received via SMS, WhatsApp, or calls to enable DOT to disconnect criminal phone numbers.</p>
+            <a href="https://sancharsaathi.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.88rem;" data-i18n="portal2Link">Visit sancharsaathi.gov.in &rarr;</a>
+          </div>
+
+          <!-- Resource 3 -->
+          <div class="resource-card">
+            <div class="resource-logo-title">
+              <div class="resource-icon">💻</div>
+              <h3 data-i18n="portal3Title">CERT-In</h3>
+            </div>
+            <p data-i18n="portal3Desc">National agency for reporting malware infections, unauthorized account access, and phishing website takedowns.</p>
+            <a href="https://www.cert-in.org.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.88rem;" data-i18n="portal3Link">Visit cert-in.org.in &rarr;</a>
+          </div>
+
+          <!-- Resource 4 -->
+          <div class="resource-card">
+            <div class="resource-logo-title">
+              <div class="resource-icon">🏦</div>
+              <h3 data-i18n="portal4Title">RBI CMS (Banking Ombudsman)</h3>
+            </div>
+            <p data-i18n="portal4Desc">If your bank does not resolve unauthorized electronic transactions within standard limits, escalate to RBI Ombudsman.</p>
+            <a href="https://cms.rbi.org.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.88rem;" data-i18n="portal4Link">Visit cms.rbi.org.in &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Pledge & Certificate Generator -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="pledgeTag">Community Engagement</span>
+          <h2 class="section-title" data-i18n="pledgeTitle">Take the Cyber-Smart Community Pledge</h2>
+          <p class="section-desc" data-i18n="pledgeDesc">Commit to digital vigilance and receive your personal Cyber Safety Champion Certificate.</p>
+        </div>
+
+        <div class="pledge-box">
+          <form id="pledgeForm">
+            <div class="form-group">
+              <label for="pledgeName" class="form-label" data-i18n="pledgeNameLabel">Enter Your Full Name:</label>
+              <input type="text" id="pledgeName" class="form-input" required placeholder="e.g., Rajesh Kulkarni" data-i18n-placeholder="pledgeNamePlaceholder">
+            </div>
+
+            <div class="pledge-checkboxes">
+              <label class="checkbox-label">
+                <input type="checkbox" required checked>
+                <span data-i18n="pledgeCheck1">I will NEVER share OTPs, UPI PINs, or bank passwords with anyone.</span>
+              </label>
+
+              <label class="checkbox-label">
+                <input type="checkbox" required checked>
+                <span data-i18n="pledgeCheck2">I know that Indian Police and CBI never conduct video 'Digital Arrests'.</span>
+              </label>
+
+              <label class="checkbox-label">
+                <input type="checkbox" required checked>
+                <span data-i18n="pledgeCheck3">I will never click suspicious links or install APK files from unknown senders.</span>
+              </label>
+
+              <label class="checkbox-label">
+                <input type="checkbox" required checked>
+                <span data-i18n="pledgeCheck4">I pledge to educate at least 3 family members or senior citizens about 1930.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; padding: 0.9rem;" data-i18n="pledgeBtn">
+              Generate My Cyber Champion Badge
+            </button>
+          </form>
+
+          <!-- Generated Badge & Certificate Display -->
+          <div id="badgeResult" class="badge-result">
+            <div class="badge-icon">🎖️</div>
+            <h3 style="font-size:0.85rem; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:0.4rem;" data-i18n="pledgeCertificateTitle">CERTIFICATE OF CYBER VIGILANCE</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary);" data-i18n="pledgeCertifiedText">This certifies that</p>
+            <div id="badgeRecipient" class="badge-name">Citizen of India</div>
+            <p style="font-size:0.92rem; color:var(--text-secondary); max-width:500px; margin:0 auto 1rem;" data-i18n="pledgeHonoredText">
+              has committed to the Community Cyber Safety Code and pledged to protect our society against online financial frauds.
+            </p>
+            <div style="font-size:0.82rem; font-weight:600; color:var(--brand-primary);">
+              <span data-i18n="pledgeDateLabel">Issued on:</span> <span id="badgeDate">-</span>
+            </div>
+            <div style="margin-top:1.25rem;">
+              <button type="button" class="btn btn-secondary" onclick="window.print()" style="font-size:0.82rem; padding: 0.4rem 0.9rem;">
+                🖨️ Print / Save Badge
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 data-i18n="footerAboutTitle">About This Initiative</h4>
+          <p data-i18n="footerAboutText">CyberSatark is an independent grassroots community awareness portal empowering citizens, elders, and youth against cyber frauds across India.</p>
+          <div style="font-weight:700; color:var(--brand-primary);">🛡️ CyberSatark Community Hub</div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLinksTitle">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" data-i18n="navHome">Home &amp; Overview</a></li>
+            <li><a href="problems.html" data-i18n="navProblems">Threats &amp; Frauds</a></li>
+            <li><a href="solutions.html" data-i18n="navSolutions">Defense &amp; Solutions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerHelplineTitle">Emergency Contacts</h4>
+          <ul class="footer-links">
+            <li><strong>Helpline:</strong> <a href="tel:1930">1930 (Toll Free)</a></li>
+            <li><strong>Portal:</strong> <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a></li>
+            <li><strong>Spam Reporting:</strong> <a href="https://sancharsaathi.gov.in" target="_blank" rel="noopener noreferrer">Chakshu Portal</a></li>
+            <li><strong>Police Control:</strong> <a href="tel:112">112</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerDisclaimersTitle">Important Disclaimer</h4>
+          <p data-i18n="footerDisclaimersText">This portal is strictly an educational public service resource. For active crime reporting, always use official government channels: dial 1930 or visit cybercrime.gov.in.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footerCopy">CyberSatark: Community Cyber Defense Initiative. Built for public safety and digital literacy.</p>
+        <p>Available in: English • हिन्दी • मराठी</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

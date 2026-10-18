@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberSatark - Community Cyber Defense & Fraud Awareness Hub</title>
+  <meta name="description" content="CyberSatark: Grassroots Community Cyber Safety Portal. Spot digital arrest, UPI QR fraud, fake electricity APKs, analyze suspicious messages, and access the 1930 emergency protocol. In English, Hindi, and Marathi.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Live Threat Alert Ticker -->
+  <aside class="alert-ticker" aria-label="Trending cyber threat advisory">
+    <span class="ticker-badge" data-i18n="tickerBadgeText">LIVE ALERT</span>
+    <span class="ticker-text" data-i18n="tickerNotice">Beware of malicious WhatsApp wedding invitation APKs (Shaadi_Card.apk) and fake traffic challan links draining bank accounts!</span>
+  </aside>
+
+  <!-- Emergency Helpline Strip -->
+  <aside class="emergency-strip" aria-label="Emergency Cyber Crime Helpline">
+    <div class="container">
+      <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+        <span data-i18n="emergencyBarText">Immediate Financial Fraud? Dial Official National Helpline:</span>
+        <span class="emergency-dial-badge">📞 1930</span>
+      </div>
+      <div>
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" data-i18n="emergencyBarAction">Report at cybercrime.gov.in</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="CyberSatark Homepage">
+        <div class="brand-icon">🛡️</div>
+        <div class="brand-title">
+          <span data-i18n="brandTitle">CyberSatark</span>
+          <span class="sub" data-i18n="brandSubtitle">Community Cyber Defense Initiative</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active" data-i18n="navHome">Home &amp; Overview</a></li>
+          <li><a href="problems.html" class="nav-link" data-i18n="navProblems">Threats &amp; Frauds</a></li>
+          <li><a href="solutions.html" class="nav-link" data-i18n="navSolutions">Defense &amp; Solutions</a></li>
+        </ul>
+      </nav>
+
+      <!-- Controls: Language & Theme -->
+      <div class="header-controls">
+        <div class="lang-select-wrap">
+          <select id="headerLangSelect" class="lang-select" aria-label="Select language">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+          </select>
+          <span class="lang-select-arrow">▼</span>
+        </div>
+
+        <button id="themeToggleBtn" class="theme-btn" aria-label="Toggle theme">
+          <svg id="sunIcon" style="display:none;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moonIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Open mobile navigation">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Startup Preferred Language Toast / Modal -->
+  <div id="langToastModal" class="lang-toast-overlay" role="dialog" aria-modal="true" aria-labelledby="langToastTitle">
+    <div class="lang-toast-card">
+      <button id="langToastClose" class="lang-toast-close" aria-label="Close language selector">&times;</button>
+      <div class="lang-toast-badge">
+        <span>🌐</span> <span data-i18n="toastBadge">Community Initiative</span>
+      </div>
+      <h2 id="langToastTitle" class="lang-toast-title" data-i18n="toastTitle">Select Your Preferred Language</h2>
+      <p class="lang-toast-subtitle" data-i18n="toastSubtitle">Choose a language for seamless awareness across English, हिन्दी, and मराठी.</p>
+      
+      <div class="lang-toast-buttons">
+        <button class="lang-pick-btn" data-lang="en">
+          <span>English</span>
+          <small>Default</small>
+        </button>
+        <button class="lang-pick-btn" data-lang="hi">
+          <span>हिन्दी</span>
+          <small>Hindi</small>
+        </button>
+        <button class="lang-pick-btn" data-lang="mr">
+          <span>मराठी</span>
+          <small>Marathi</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unique Feature: Floating Emergency SOS Button -->
+  <button id="floatingSosBtn" class="floating-sos-btn" aria-label="Open emergency cyber fraud triage">
+    <span data-i18n="sosBtnText">🚨 Emergency: Just Defrauded?</span>
+  </button>
+
+  <!-- Emergency SOS Triage Modal -->
+  <div id="sosModal" class="sos-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="sosModalTitle">
+    <div class="sos-modal-card">
+      <button id="sosModalClose" class="sos-modal-close" aria-label="Close emergency modal">&times;</button>
+      <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+        <span style="font-size:1.5rem;">🚨</span>
+        <h2 id="sosModalTitle" style="font-size:1.35rem; font-weight:800; color:var(--danger-base);" data-i18n="sosModalTitle">Immediate Cyber Fraud Emergency Action</h2>
+      </div>
+      <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;" data-i18n="sosModalSub">Act quickly! The first 120 minutes are crucial to freeze stolen money in cybercrime networks.</p>
+
+      <a href="tel:1930" class="btn btn-danger" style="width:100%; padding:0.9rem; font-size:1.05rem; margin-bottom:1.25rem;" data-i18n="sosCallDirect">
+        📞 Tap to Call 1930 Helpline (Toll-Free 24/7)
+      </a>
+
+      <div style="background-color:var(--bg-surface-elevated); padding:1rem; border-radius:var(--radius-sm); border-left:3px solid var(--danger-base); margin-bottom:1.25rem;">
+        <div style="font-size:0.88rem; display:flex; flex-direction:column; gap:0.4rem; color:var(--text-secondary);">
+          <div data-i18n="sosRule1"><strong>1. Keep UTR Ready:</strong> Note your Bank Transaction ID / UTR number from SMS.</div>
+          <div data-i18n="sosRule2"><strong>2. Freeze Netbanking:</strong> Immediately block your UPI and ATM card from your banking app.</div>
+          <div data-i18n="sosRule3"><strong>3. Don't Delete Evidence:</strong> Keep WhatsApp chats, fake numbers, and screenshots intact.</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:0.95rem; font-weight:700; margin-bottom:0.5rem;" data-i18n="sosBankListTitle">Instant Bank Card Lock Toll-Free Numbers:</h3>
+      <div class="sos-bank-grid">
+        <div class="sos-bank-card">
+          <strong>State Bank of India (SBI)</strong>
+          <span>Call: <a href="tel:18001234">1800 1234</a></span><br>
+          <span>SMS: <code>BLOCK &lt;Last 4 digits&gt;</code> to 567676</span>
+        </div>
+        <div class="sos-bank-card">
+          <strong>HDFC Bank</strong>
+          <span>Call: <a href="tel:18001600">1800 1600</a></span><br>
+          <span>Quick Netbanking block via App</span>
+        </div>
+        <div class="sos-bank-card">
+          <strong>ICICI Bank</strong>
+          <span>Call: <a href="tel:18001080">1800 1080</a></span><br>
+          <span>iMobile: Security &gt; Block Card</span>
+        </div>
+        <div class="sos-bank-card">
+          <strong>Bank of Baroda</strong>
+          <span>Call: <a href="tel:18005700">1800 5700</a></span><br>
+          <span>Bob World: Cards &gt; Freeze</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span>🛡️</span> <span data-i18n="heroBadge">National Public Awareness Project</span>
+          </div>
+          <h1 class="hero-title" data-i18n="heroTitle">
+            Empowering Communities Against <span class="highlight">Cyber Crime &amp; Online Fraud</span>
+          </h1>
+          <p class="hero-desc" data-i18n="heroDesc">
+            A dedicated grassroots community defense portal equipping citizens, students, and elders across India with real-world fraud breakdowns, live scam checking, and official 1930 recovery workflows.
+          </p>
+          <div class="hero-actions">
+            <a href="problems.html" class="btn btn-primary" data-i18n="heroBtnThreats">Explore Common Threats</a>
+            <a href="solutions.html" class="btn btn-secondary" data-i18n="heroBtnSolutions">Emergency Recovery Guide</a>
+          </div>
+          <div class="hero-quick-stats">
+            <div class="stat-item">
+              <h3 data-i18n="heroStat1Number">1930</h3>
+              <p data-i18n="heroStat1Label">National Cyber Helpline (Toll-Free 24/7)</p>
+            </div>
+            <div class="stat-item">
+              <h3 data-i18n="heroStat2Number">Golden Hour</h3>
+              <p data-i18n="heroStat2Label">Report within 2-3 hours to freeze stolen money</p>
+            </div>
+            <div class="stat-item">
+              <h3 data-i18n="heroStat3Number">₹1,750+ Cr</h3>
+              <p data-i18n="heroStat3Label">Saved nationwide by swift 1930 action</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-card">
+            <!-- Better high-resolution cyber defense monitor image -->
+            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1200&q=80" alt="Cyber Security Command Center Screen" loading="lazy">
+            <div class="hero-caption">
+              <span>🔒</span> <span data-i18n="heroImgCaption">Cyber Command Defense: Verifying sources before clicking protects your hard-earned savings.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unique Feature: Live Scam & SMS Checker Tool -->
+    <section class="scam-checker-section">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:2rem;">
+          <span class="section-tag" data-i18n="checkerTag">Instant Threat Analyzer</span>
+          <h2 class="section-title" data-i18n="checkerTitle">Is This Message a Scam? Check Here</h2>
+          <p class="section-desc" data-i18n="checkerDesc">Paste any suspicious SMS, WhatsApp message, or call claim to check the danger level and psychological trap.</p>
+        </div>
+
+        <div class="scam-checker-box">
+          <div style="margin-bottom:0.6rem; font-size:0.85rem; font-weight:700; color:var(--text-muted);">
+            Click a sample or paste your own message:
+          </div>
+          <div class="preset-pills">
+            <button type="button" class="preset-pill-btn" data-preset="apk" data-i18n="checkerPill1">💡 Electricity Cutoff APK</button>
+            <button type="button" class="preset-pill-btn" data-preset="cbi" data-i18n="checkerPill2">💡 CBI Video Digital Arrest</button>
+            <button type="button" class="preset-pill-btn" data-preset="qr" data-i18n="checkerPill3">💡 Scan QR to Receive Money</button>
+            <button type="button" class="preset-pill-btn" data-preset="telegram" data-i18n="checkerPill4">💡 Telegram Like Video Job</button>
+          </div>
+
+          <div class="checker-input-group">
+            <textarea id="checkerInput" class="checker-textarea" placeholder="Paste message text here (e.g., 'Electricity disconnected at 9:30 PM', 'You won lottery, scan QR to receive', 'CBI video call arrest warrant')..." data-i18n-placeholder="checkerPlaceholder"></textarea>
+            <button id="checkerBtn" type="button" class="btn btn-primary" style="padding:0.85rem;" data-i18n="checkerBtn">
+              Analyze Message for Scam Red Flags
+            </button>
+          </div>
+
+          <!-- Dynamic Result Card -->
+          <div id="checkerResultCard" class="checker-result-card" role="alert">
+            <h3 id="checkerResultTitle" style="font-size:1.05rem; font-weight:800; margin-bottom:0.4rem;"></h3>
+            <p id="checkerResultRule" style="font-size:0.9rem; line-height:1.55;"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem vs Solution Overview Section -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="overviewTag">Understanding the Ecosystem</span>
+          <h2 class="section-title" data-i18n="overviewTitle">The Problem vs. The Community Solution</h2>
+          <p class="section-desc" data-i18n="overviewDesc">Cybercriminals leverage psychological manipulation (fear, urgency, greed). We fight back with awareness, verification, and rapid action.</p>
+        </div>
+
+        <div class="ps-overview-grid">
+          <!-- Problem Side Card -->
+          <div class="ps-card problem-side">
+            <div class="ps-header">
+              <div class="ps-icon">⚠️</div>
+              <h3 data-i18n="problemCardTitle">The Problem: How Fraud Happens</h3>
+            </div>
+            <ul class="ps-list">
+              <li>
+                <span class="ps-bullet">🚨</span>
+                <span data-i18n="problemPoint1"><strong>Fear &amp; Coercion:</strong> Scammers pose as police or CBI over video calls ('Digital Arrest').</span>
+              </li>
+              <li>
+                <span class="ps-bullet">📱</span>
+                <span data-i18n="problemPoint2"><strong>Fake Links &amp; APKs:</strong> Urgent SMS claiming power cut or bank KYC disconnection.</span>
+              </li>
+              <li>
+                <span class="ps-bullet">💸</span>
+                <span data-i18n="problemPoint3"><strong>Greed Traps:</strong> Telegram work-from-home tasks and fake high-return crypto trading.</span>
+              </li>
+              <li>
+                <span class="ps-bullet">🔄</span>
+                <span data-i18n="problemPoint4"><strong>UPI Confusion:</strong> Sending a QR code or PIN request claiming 'Scan to receive money'.</span>
+              </li>
+            </ul>
+            <a href="problems.html" class="btn btn-danger" style="margin-top:auto;" data-i18n="heroBtnThreats">Explore Common Threats →</a>
+          </div>
+
+          <!-- Solution Side Card -->
+          <div class="ps-card solution-side">
+            <div class="ps-header">
+              <div class="ps-icon">🛡️</div>
+              <h3 data-i18n="solutionCardTitle">The Solution: Community Defense</h3>
+            </div>
+            <ul class="ps-list">
+              <li>
+                <span class="ps-bullet">⏱️</span>
+                <span data-i18n="solutionPoint1"><strong>Golden Hour Protocol:</strong> Dial 1930 within 2 hours to freeze inter-bank money transfers.</span>
+              </li>
+              <li>
+                <span class="ps-bullet">⚖️</span>
+                <span data-i18n="solutionPoint2"><strong>Zero Panic Rule:</strong> Real Indian law enforcement never conducts online video arrests.</span>
+              </li>
+              <li>
+                <span class="ps-bullet">🔍</span>
+                <span data-i18n="solutionPoint3"><strong>Source Verification:</strong> Never install remote tools like AnyDesk, RustDesk, or TeamViewer for strangers.</span>
+              </li>
+              <li>
+                <span class="ps-bullet">📡</span>
+                <span data-i18n="solutionPoint4"><strong>Chakshu &amp; Sanchar Saathi:</strong> Proactively report fraud numbers to get their SIMs disconnected.</span>
+              </li>
+            </ul>
+            <a href="solutions.html" class="btn btn-primary" style="margin-top:auto;" data-i18n="heroBtnSolutions">Emergency Recovery Guide →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Video Awareness Section -->
+    <section class="video-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="videoSectionTag">National Awareness Campaigns</span>
+          <h2 class="section-title" data-i18n="videoSectionTitle">Verified Explainer Videos from Across the Country</h2>
+          <p class="section-desc" data-i18n="videoSectionDesc">Watch authentic educational broadcasts and police advisories explaining real-life scams and the official recovery process.</p>
+        </div>
+
+        <div class="video-grid">
+          <!-- Video Card 1 -->
+          <article class="video-card">
+            <div class="video-embed-wrap">
+              <iframe src="https://www.youtube.com/embed/ynUWsS79sfw" title="1930 Helpline Money Recovery Process - DD News" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <span class="video-tag" data-i18n="video1Tag">DD News Official Broadcast</span>
+              <h3 class="video-title" data-i18n="video1Title">1930 Helpline: Complete Official Money Recovery Process</h3>
+              <p class="video-desc" data-i18n="video1Desc">Step-by-step guide on what happens after you dial 1930 and how cyber police trace and freeze transactions.</p>
+            </div>
+          </article>
+
+          <!-- Video Card 2 -->
+          <article class="video-card">
+            <div class="video-embed-wrap">
+              <iframe src="https://www.youtube.com/embed/BvHf7-gKbQY" title="Digital Arrest Real Incident Breakdown" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <span class="video-tag" data-i18n="video2Tag">Real Incident Breakdown</span>
+              <h3 class="video-title" data-i18n="video2Title">Digital Arrest Scam: Live Coercion Tactics Exposed</h3>
+              <p class="video-desc" data-i18n="video2Desc">Victim's firsthand account of how scammers posed as cyber crime police and how to immediately break free.</p>
+            </div>
+          </article>
+
+          <!-- Video Card 3 -->
+          <article class="video-card">
+            <div class="video-embed-wrap">
+              <iframe src="https://www.youtube.com/embed/uO7-uWjIxOU" title="1930 Cyber Crime Helpline SOP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <span class="video-tag" data-i18n="video3Tag">Helpline Deep Dive</span>
+              <h3 class="video-title" data-i18n="video3Title">What to Do If Defrauded: Cyber Crime Reporting SOP</h3>
+              <p class="video-desc" data-i18n="video3Desc">A complete walkthrough of the National Cybercrime Reporting Portal (cybercrime.gov.in) and citizen rights.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Stories Section -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag" data-i18n="storiesTag">Real Community Impact</span>
+          <h2 class="section-title" data-i18n="storiesTitle">Community Vigilance in Action</h2>
+        </div>
+
+        <div class="ps-overview-grid">
+          <div class="ps-card" style="border-left: 4px solid var(--brand-accent);">
+            <p style="font-style:italic; font-size:1.05rem; line-height:1.6; margin-bottom:1rem; color:var(--text-primary);" data-i18n="story1Quote">
+              "I received a call claiming my electricity would be disconnected at 9 PM. Remembering the workshop advice, I refused to install their APK and called my local discom. My account was saved."
+            </p>
+            <p style="font-weight:700; color:var(--brand-primary); font-size:0.9rem;" data-i18n="story1Author">— Sunita Deshmukh, Pune (Homemaker)</p>
+          </div>
+
+          <div class="ps-card" style="border-left: 4px solid var(--brand-accent);">
+            <p style="font-style:italic; font-size:1.05rem; line-height:1.6; margin-bottom:1rem; color:var(--text-primary);" data-i18n="story2Quote">
+              "My father was kept on a 3-hour video call by fake CBI officers. I remembered the 'Digital Arrest does not exist' rule, disconnected the call, and reported it on 1930 immediately."
+            </p>
+            <p style="font-weight:700; color:var(--brand-primary); font-size:0.9rem;" data-i18n="story2Author">— Rahul Sharma, Nagpur (Engineering Student)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 data-i18n="footerAboutTitle">About This Initiative</h4>
+          <p data-i18n="footerAboutText">CyberSatark is an independent grassroots community awareness portal empowering citizens, elders, and youth against cyber frauds across India.</p>
+          <div style="font-weight:700; color:var(--brand-primary);">🛡️ CyberSatark Community Hub</div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerLinksTitle">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" data-i18n="navHome">Home &amp; Overview</a></li>
+            <li><a href="problems.html" data-i18n="navProblems">Threats &amp; Frauds</a></li>
+            <li><a href="solutions.html" data-i18n="navSolutions">Defense &amp; Solutions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerHelplineTitle">Emergency Contacts</h4>
+          <ul class="footer-links">
+            <li><strong>Helpline:</strong> <a href="tel:1930">1930 (Toll Free)</a></li>
+            <li><strong>Portal:</strong> <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a></li>
+            <li><strong>Spam Reporting:</strong> <a href="https://sancharsaathi.gov.in" target="_blank" rel="noopener noreferrer">Chakshu Portal</a></li>
+            <li><strong>Police Control:</strong> <a href="tel:112">112</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footerDisclaimersTitle">Important Disclaimer</h4>
+          <p data-i18n="footerDisclaimersText">This portal is strictly an educational public service resource. For active crime reporting, always use official government channels: dial 1930 or visit cybercrime.gov.in.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="footerCopy">CyberSatark: Community Cyber Defense Initiative. Built for public safety and digital literacy.</p>
+        <p>Available in: English • हिन्दी • मराठी</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
